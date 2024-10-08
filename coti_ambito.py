@@ -3,7 +3,20 @@ import time
 from database import cursor
 
 def get_cotizacion():
-    response = requests.get("https://mercados.ambito.com/dolar/informal/variacion")
+    response = requests.get("https://mercados.ambito.com/dolar/informal/variacion", headers={
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7", 
+        "Accept-Language": "es-ES,es;q=0.9", 
+        "Priority": "u=0, i", 
+        "Sec-Ch-Ua": "\"Chromium\";v=\"128\", \"Not;A=Brand\";v=\"24\", \"Google Chrome\";v=\"128\"", 
+        "Sec-Ch-Ua-Mobile": "?0", 
+        "Sec-Ch-Ua-Platform": "\"Windows\"", 
+        "Sec-Fetch-Dest": "document", 
+        "Sec-Fetch-Mode": "navigate", 
+        "Sec-Fetch-Site": "none", 
+        "Sec-Fetch-User": "?1", 
+        "Upgrade-Insecure-Requests": "1", 
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+    })
     response.raise_for_status()  # Handle HTTP errors
     
     # Parse the JSON response
@@ -13,40 +26,4 @@ def get_cotizacion():
         float(data_usd['compra'].replace(',', '.')),
         float(data_usd['venta'].replace(',', '.'))
     )
-
-
-if __name__ == '__main__':
-    while True:
-        try:
-            response = requests.get("https://mercados.ambito.com/dolar/informal/variacion")
-            response.raise_for_status()  # Handle HTTP errors
-            
-            # Parse the JSON response
-            data_usd = response.json()
-
-            #valores ambito
-            compra_usd_amb = data_usd['compra']
-            venta_usd_amb = data_usd['venta']
-            fecha_usd_amb = data_usd['fecha']
-            variacion_usd_amb = data_usd['variacion']
-
-            print(compra_usd_amb)
-            print(venta_usd_amb)
-            print(fecha_usd_amb)
-            print(variacion_usd_amb)
-
-            print('////////////////')
-
-        
-            
-            coti_compra = float(data_usd['compra'].replace(',', '.')) * 0.995
-            coti_venta = float(data_usd['venta'].replace(',', '.')) +5
-            print(f"Compra Coti USD: {coti_compra:.2f}")
-            print(data_usd) 
-            
-            
-        except requests.exceptions.RequestException as e:
-            print(f"Error fetching data: {e}")
-            # Optional: wait before retrying in case of an error
-        time.sleep(6)
 

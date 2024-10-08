@@ -5,7 +5,7 @@ from google.oauth2.service_account import Credentials
 
 # Path to your service account key file
 SERVICE_ACCOUNT_FILE = 'path/to/your/service_account_key.json'
-
+2
 # Define the scope
 SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
 
