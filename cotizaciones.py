@@ -4,7 +4,7 @@ import time
 import api_fiwind
 import dolar_blue_cy
 import coti_binance
-import dolar_amb_cl
+import dolar_ccl_cy
 import dolar_amb_mep
 
 import database
@@ -15,7 +15,7 @@ COTIZACIONES = {
     "Dolar Blue": dolar_blue_cy.get_cotizacion,
     "fiwind": api_fiwind.get_cotizacion,
     "binance": coti_binance.get_cotizacion,
-    "ccl": dolar_amb_cl.get_cotizacion,
+    "ccl": dolar_ccl_cy.get_cotizacion,
     "mep": dolar_amb_mep.get_cotizacion,
 }
 
