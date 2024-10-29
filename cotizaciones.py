@@ -6,6 +6,11 @@ import dolar_blue_cy
 import coti_binance
 import dolar_ccl_cy
 import dolar_amb_mep
+import api_buenbit
+import api_tiendacry
+import api_argenbtc
+import api_pluscrypto
+
 
 import database
 
@@ -17,6 +22,10 @@ COTIZACIONES = {
     "binance": coti_binance.get_cotizacion,
     "ccl": dolar_ccl_cy.get_cotizacion,
     "mep": dolar_amb_mep.get_cotizacion,
+    "buenbit": api_buenbit.get_cotizacion,
+    "tiendacry": api_tiendacry.get_cotizacion,
+    "argenbtc": api_argenbtc.get_cotizacion,
+    "pluscrypto": api_pluscrypto.get_cotizacion,
 }
 
 # NO TOCAR ABAJO DE ESTA LINEA
