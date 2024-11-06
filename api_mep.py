@@ -7,9 +7,9 @@ def get_cotizacion():
     response = requests.get("https://criptoya.com/api/dolar")
     response.raise_for_status()
     data_mep = response.json()
-    price_mep = data_mep['mep']['al30']['ci']['price']
-    # Return both compra and venta as a tuple
-    return price_mep, price_mep
+    price = data_mep['mep']['al30']['ci']['price']
+    # Store the same price for both compra and venta since there's no spread
+    return price, price  # This will store price in both COMPRA and VENTA columns
 
 
 if __name__ == "__main__":
