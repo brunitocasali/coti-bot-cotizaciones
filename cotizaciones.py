@@ -10,6 +10,10 @@ import api_buenbit
 import api_tiendacry
 import api_argenbtc
 import api_pluscrypto
+import api_bybit
+import api_mep
+import api_ccl
+
 
 
 import database
@@ -26,6 +30,9 @@ COTIZACIONES = {
     "tiendacry": api_tiendacry.get_cotizacion,
     "argenbtc": api_argenbtc.get_cotizacion,
     "pluscrypto": api_pluscrypto.get_cotizacion,
+    "bybit": api_bybit.get_cotizacion,
+    "mep": api_mep.get_cotizacion,
+    "ccl": api_ccl.get_cotizacion,
 }
 
 # NO TOCAR ABAJO DE ESTA LINEA
